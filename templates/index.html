@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Performance Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Student Performance Prediction</h2>
+
+  <form method="POST">
+    <div class="field">
+      <label>Study Hours</label>
+      <input type="number" name="study_hrs" required>
+    </div>
+
+    <div class="field">
+      <label>Attendance (%)</label>
+      <input type="number" name="attendance" required>
+    </div>
+
+    <div class="field">
+      <label>Class Participation</label>
+      <input type="number" name="class_part" required>
+    </div>
+
+    <div class="field">
+      <label>Total Score</label>
+      <input type="number" name="total_score" required>
+    </div>
+
+    <button type="submit">Predict</button>
+  </form>
+
+    {% if result %}
+        <div id="resultBox"
+            class="result {{ 'pass' if result == 'PASS' else 'fail' }}"
+            data-result="{{ 'PASS' if 'pass' in result|lower else 'FAIL' }}">
+            Result: {{ result }}
+        </div>
+    {% endif %}
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

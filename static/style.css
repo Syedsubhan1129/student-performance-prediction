@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Baloo 2', cursive;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #0a143d;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ☁️ Falling bubbles from top */
+.bubble {
+  position: absolute;
+  top: -80px;
+  border-radius: 50%;
+  background: #c9b0de;
+  opacity: 0.8;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-100px);
+  }
+  to {
+    transform: translateY(110vh);
+  }
+}
+
+/* 🌟 Main Card drops from top */
+.container {
+  width: 440px;
+  background: #dce4fc;
+  padding: 30px;
+  border-radius: 22px;
+  box-shadow: 0 30px 50px rgba(0,0,0,0.35);
+  animation: dropCard 0.9s ease-out;
+  position: relative;
+  z-index: 5;
+}
+
+@keyframes dropCard {
+  from {
+    transform: translateY(-250px) scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+h2 {
+  text-align: center;
+  color: #7b82c9;
+  margin-bottom: 20px;
+  animation: dropText 0.8s ease;
+}
+h3{
+    color: #c9b0de;
+}
+
+@keyframes dropText {
+  from { transform: translateY(-60px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Form fields drop one by one */
+.field {
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: dropField 0.7s ease forwards;
+}
+
+.field:nth-child(1){ animation-delay: .2s }
+.field:nth-child(2){ animation-delay: .35s }
+.field:nth-child(3){ animation-delay: .5s }
+.field:nth-child(4){ animation-delay: .65s }
+
+@keyframes dropField {
+  from {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+label {
+  display: block;
+  margin-bottom: 4px;
+  color: #c9b0de;
+  
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 12px;
+  border: 2px solid #7b82c9;
+  font-size: 15px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #6464a9;
+  background: #ffffff;
+}
+
+/* Button gently falling/bouncing */
+button {
+  width: 100%;
+  padding: 14px;
+  border-radius: 30px;
+  background: linear-gradient(to right, #7b82c9, #6464a9);
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  animation: floatButton 2s ease-in-out infinite;
+}
+
+@keyframes floatButton {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+button:hover {
+  background: linear-gradient(to right, #6464a9, #7b82c9);
+}
+.emoji {
+  font-size: 34px;
+  margin-left: 10px;
+  display: inline-block;
+}
+.falling-emoji {
+  position: fixed;
+  top: -50px;
+  font-size: 32px;
+  animation: emojiFall linear forwards;
+  z-index: 1000;
+}
+
+@keyframes emojiFall {
+  from {
+    transform: translateY(-60px);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+
+.result {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 18px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  animation: dropFromTop 0.9s cubic-bezier(.25,1.4,.5,1);
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes dropFromTop {
+  from {
+    transform: translateY(-180px) scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+.confetti {
+  position: fixed;
+  top: -20px;
+  width: 10px;
+  height: 14px;
+  background: #C9B0DE;
+  opacity: 0.9;
+  animation: confettiFall linear forwards;
+  z-index: 999;
+}
+
+@keyframes confettiFall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+.fail .emoji {
+  display: inline-block;
+  margin-left: 10px;
+  animation: sadShake 1s infinite;
+}
+
+@keyframes sadShake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  50% { transform: translateX(4px); }
+  75% { transform: translateX(-4px); }
+  100% { transform: translateX(0); }
+}
+
+
+.pass {
+  background: #c9b0de;
+  color: #0a143d;
+}
+
+.fail {
+  background: #7b82c9;
+  color: #ffffff;
+}
