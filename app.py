@@ -3,7 +3,7 @@ import joblib
 import numpy as np
 import pandas as pd
 app = Flask(__name__)
-model=joblib.load('student_ensemble_model.pkl')
+model=joblib.load('student_RFc.pkl')
 @app.route('/', methods=['GET', 'POST'])
 def home():
     result = None
