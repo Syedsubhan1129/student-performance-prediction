@@ -11,10 +11,9 @@ def home():
         study_hrs = float(request.form["study_hrs"])
         attendance = float(request.form["attendance"])
         class_part = float(request.form["class_part"])
-        total_score = float(request.form["total_score"])
 
-        user_df = pd.DataFrame([[study_hrs, attendance, class_part, total_score]],
-                               columns=['weekly_self_study_hours','attendance_percentage','class_participation','total_score'])
+        user_df = pd.DataFrame([[study_hrs, attendance, class_part]],
+                               columns=['weekly_self_study_hours','attendance_percentage','class_participation'])
         prediction = model.predict(user_df)
         if prediction[0] == 1:
             result = "The student is likely to pass."
